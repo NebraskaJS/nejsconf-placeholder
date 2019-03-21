@@ -1,0 +1,22 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# Redirect to HTTPS
+RewriteCond %{http:X-FORWARDED-PROTO} !https
+RewriteCond %{HTTP_HOST} ^2018\.nejsconf\.com$ [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R,L]
+# End
+
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}.zgz -f 
+RewriteRule ^(.*)$ $1.zgz [L]
+
+# RedirectMatch 301 ^/cfp$ https://www.papercall.io/nejsconf2018
+# RedirectMatch 301 ^/cfp/$ https://www.papercall.io/nejsconf2018
+
+RedirectMatch 301 ^/2015/(.*)$ https://2015.nejsconf.com/2015/$1
+RedirectMatch 301 ^/2016/(.*)$ https://2016.nejsconf.com/2016/$1
+RedirectMatch 301 ^/2017/(.*)$ https://2017.nejsconf.com/2017/$1
+
+</IfModule>
