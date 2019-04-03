@@ -12,6 +12,10 @@ RewriteCond %{HTTP:Accept-Encoding} gzip
 RewriteCond %{REQUEST_FILENAME}.zgz -f 
 RewriteRule ^(.*)$ $1.zgz [L]
 
+<FilesMatch "zgz$">
+    Header set Content-Encoding gzip
+</FilesMatch>
+
 # RedirectMatch 301 ^/cfp$ https://www.papercall.io/nejsconf2019
 # RedirectMatch 301 ^/cfp/$ https://www.papercall.io/nejsconf2019
 
@@ -19,5 +23,4 @@ RedirectMatch 301 ^/2015/(.*)$ https://2015.nejsconf.com/2015/$1
 RedirectMatch 301 ^/2016/(.*)$ https://2016.nejsconf.com/2016/$1
 RedirectMatch 301 ^/2017/(.*)$ https://2017.nejsconf.com/2017/$1
 RedirectMatch 301 ^/2018/(.*)$ https://2018.nejsconf.com/2018/$1
-
 </IfModule>
