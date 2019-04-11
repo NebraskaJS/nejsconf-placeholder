@@ -16,8 +16,8 @@ RewriteRule ^(.*)$ $1.zgz [L]
     Header set Content-Encoding gzip
 </FilesMatch>
 
-# RedirectMatch 301 ^/cfp$ https://www.papercall.io/nejsconf2019
-# RedirectMatch 301 ^/cfp/$ https://www.papercall.io/nejsconf2019
+RedirectMatch 301 ^/cfp$ https://www.papercall.io/nejsconf-2019
+RedirectMatch 301 ^/cfp/$ https://www.papercall.io/nejsconf-2019
 
 RedirectMatch 301 ^/2015/(.*)$ https://2015.nejsconf.com/2015/$1
 RedirectMatch 301 ^/2016/(.*)$ https://2016.nejsconf.com/2016/$1
